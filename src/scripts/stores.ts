@@ -39,6 +39,10 @@ interface State {
 }
 
 export const eLevels = ["1s", "2s", "2p", "3s", "3p"];
+// max # of electrons in each orbital.
+export const FULL_ORBITAL_CTS = [2, 2, 6, 2, 6];
+// just the first digits from the orbitals.
+export const LEVELS = [1, 2, 2, 3, 3];
 
 export const selectedElement$ = atom<State>({
   selectedHTMLElement: null,

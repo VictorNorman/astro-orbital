@@ -1,7 +1,8 @@
 import { elements } from './elements';
-import { type ElementType, type Orbital, selectedElement$, matrixSelection$, unitsSelection$ } from './stores';
+import { type ElementType, type Orbital, selectedElement$, matrixSelection$ } from './stores';
 import { updateSelectableMatrixContents, watchCustomMatrixForChanges } from './selectableMatrix';
 import { handleTabSwitching } from './tabHandling';
+import { drawCharts } from './graphData';
 
 
 
@@ -31,6 +32,8 @@ window.addEventListener("load", () => {
   });
 
   handleTabSwitching();
+
+  drawCharts();
 
 
 });

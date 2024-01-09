@@ -5,7 +5,7 @@ import { unitsSelection$ } from "./stores";
 
 // convert 1 hartree to the given unit -- Ry, eV, etc.
 // the 2nd value is the conversion factor.
-const conversions = new Map([
+export const conversions = new Map([
   ['Ha', 1],
   ['Ry', 2],
   ['eV', 27.211386245988],

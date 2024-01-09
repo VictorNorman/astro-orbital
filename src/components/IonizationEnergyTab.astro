@@ -3,9 +3,6 @@ import TabLayout from "../layouts/TabLayout.astro";
 ---
 
 <TabLayout tabName="Ionization Energy" id="tab3">
-  <div id="eConfigInputBox">
-    <input type="text" id="eConfigInput" />
-  </div>
   <div class="ion-energy-area">
     <div id="ion-energy-left-table">
       Ground state
@@ -54,7 +51,7 @@ import TabLayout from "../layouts/TabLayout.astro";
           </tr>
         </tbody>
       </table>
-       Total Energy: <span id="ion-energy-left-table-total-energy"></span>
+      Total Energy: <span id="ion-energy-left-table-total-energy"></span>
     </div>
     <div id="ion-energy-right-table">
       Modify to see energy changes
@@ -104,11 +101,15 @@ import TabLayout from "../layouts/TabLayout.astro";
             </td>
           </tr>
         </tbody>
-         Total Energy: <span id="ion-energy-right-table-total-energy"></span>
-        <div style="color: red">
-          Ionization Energy: <span id="ion-energy-ionization-energy"></span>
-        </div>
       </table>
+      Total Energy: <span id="ion-energy-right-table-total-energy"></span>
+      <div style="color: red">
+        Ionization Energy: <span id="ion-energy-ionization-energy"></span>
+      </div>
     </div>
   </div>
 </TabLayout>
+
+<script>
+  import "../scripts/ionizationEnergy";
+</script>
