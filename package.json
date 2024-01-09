@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.3.4",
+    "@types/p5": "^1.7.6",
     "astro": "^4.0.9",
+    "nanostores": "^0.9.5",
+    "p5": "^1.9.0",
     "typescript": "^5.3.3"
   }
 }
