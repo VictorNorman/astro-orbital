@@ -1,5 +1,5 @@
 import { drawDiagram } from "./energyDiagramsDisplay";
-import { convert2Strings } from "./main";
+import { convert2Strings } from "./utils";
 import { energies$, type EnergyComponents, selectedElement$, matrixSelection$ } from "./stores";
 import { updateEnergyTables } from "./energyTables";
 

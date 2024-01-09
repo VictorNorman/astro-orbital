@@ -1,8 +1,11 @@
-import { matrixSelection$, energies$, eLevels, type EnergyComponents } from "./stores";
+import { energyToUnitsAsString } from "./utils";
+import { matrixSelection$, energies$, eLevels, type EnergyComponents, unitsSelection$ } from "./stores";
 
 
-export function updateEnergyTablesForMatrix(matrixName: string,
-  compEnergies: EnergyComponents, overrideMatrixId = ''
+export function updateEnergyTablesForMatrix(
+  matrixName: string,
+  compEnergies: EnergyComponents,
+  overrideMatrixId = ''
 ) {
 
   const tiValues = compEnergies.t_i;
@@ -81,9 +84,18 @@ export function updateEnergyTablesForMatrix(matrixName: string,
     }
     vijTableElem.appendChild(tableRow);
   }
+
+
+  // Total Energies
+  const totalEnergyElemId = (overrideMatrixId || matrixName) + "TotalEnergy";
+  const totalEnergyBox = document.getElementById(totalEnergyElemId)!;
+  totalEnergyBox.textContent = energyToUnitsAsString(compEnergies.totalEnergies[0], unitsSelection$.get());
 }
 
 export function updateEnergyTables() {
+  if (energies$.get()[0] === undefined) {
+    return;
+  }
   updateEnergyTablesForMatrix("dynamic23", energies$.get()[0]);
   updateEnergyTablesForMatrix("faussurier", energies$.get()[1]);
   updateEnergyTablesForMatrix(matrixSelection$.get(), energies$.get()[2], 'selectable');
