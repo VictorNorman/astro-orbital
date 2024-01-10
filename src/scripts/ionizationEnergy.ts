@@ -1,6 +1,7 @@
 import { dynamic23Matrix } from "./matrices";
 import { computeZis, totalOrbitalEnergy } from "./orbitalEnergies";
-import { FULL_ORBITAL_CTS, LEVELS, energies$, selectedElement$ } from "./stores";
+import { energies$, selectedElement$ } from "./stores";
+import { LEVELS, FULL_ORBITAL_CTS } from "./types";
 
 // of electrons in each orbital. Pad the array with 0s out to 5 elements.
 function getElectronsFromElectronConfig(): number[] {
@@ -58,9 +59,8 @@ export function populateIonEnergyTables() {
   cell.innerHTML = "VAOE";
   leftTableVaoeRow.appendChild(cell);
 
-  console.log("selected elem is ", selectedElemNum);
-  console.log("orbitalEnergies is: ")
-  console.table(orbitalEnergies);
+  // console.log("orbitalEnergies is: ")
+  // console.table(orbitalEnergies);
   electrons.forEach((e, index) => {
     cell = document.createElement('td');
     cell.innerText = `${e === 0 ? "0.000" : orbitalEnergies[index].toFixed(3)}`;
@@ -138,7 +138,8 @@ function handleNumElectronsChangedByUser(groundStateTotalEnergy: number) {
   // a list of Orbitals from the default/original list.
   const selectedElem = selectedElement$.get();
 
-  const newOrbitals = [...selectedElem.selectedElemOrbitals!];
+  // https://stackoverflow.com/questions/597588/how-do-you-clone-an-array-of-objects-in-javascript
+  const newOrbitals = selectedElem.selectedElemOrbitals!.map(a => ({ ...a }));
   const selectors = document.querySelectorAll(".ion-energy-econfig-select");
   selectors.forEach((cell: any) => {
     // cell.id is ion-energy-num-ions-selected-#. Lop off everything except the number
@@ -227,6 +228,4 @@ function handleNumElectronsChangedByUser(groundStateTotalEnergy: number) {
 
 }
 
-
-// selectedElement$.listen(() => populateIonEnergyTables());
 energies$.listen(() => populateIonEnergyTables());

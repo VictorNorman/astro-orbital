@@ -1,7 +1,8 @@
 import { drawDiagram } from "./energyDiagramsDisplay";
 import { convert2Strings } from "./utils";
-import { energies$, type EnergyComponents, selectedElement$, matrixSelection$ } from "./stores";
+import { energies$, selectedElement$, matrixSelection$ } from "./stores";
 import { updateEnergyTables } from "./energyTables";
+import type { EnergyComponents } from "./types";
 
 function updateDiagram(compEnergies: readonly EnergyComponents[]) {
   if (selectedElement$.get().selectedElementInfo === null) {

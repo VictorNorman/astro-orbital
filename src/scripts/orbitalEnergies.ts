@@ -1,4 +1,4 @@
-import { type Orbital } from "./stores";
+import { type Orbital } from "./types";
 
 
 // compute the orbital energies and the total. The result is an array of numbers:

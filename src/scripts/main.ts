@@ -1,8 +1,9 @@
 import { elements } from './elements';
-import { type ElementType, type Orbital, selectedElement$, matrixSelection$ } from './stores';
+import { selectedElement$, matrixSelection$ } from './stores';
 import { updateSelectableMatrixContents, watchCustomMatrixForChanges } from './selectableMatrix';
 import { handleTabSwitching } from './tabHandling';
 import { drawCharts } from './graphData';
+import type { ElementType, Orbital } from './types';
 
 
 

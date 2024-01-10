@@ -1,5 +1,6 @@
 import { energyToUnitsAsString } from "./utils";
-import { matrixSelection$, energies$, eLevels, type EnergyComponents, unitsSelection$ } from "./stores";
+import { matrixSelection$, energies$, unitsSelection$ } from "./stores";
+import { type EnergyComponents, eLevels } from "./types";
 
 
 export function updateEnergyTablesForMatrix(

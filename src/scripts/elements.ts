@@ -1,4 +1,4 @@
-import { type ElementType } from './stores';
+import { type ElementType } from './types';
 
 export const elements: ElementType[] = [
   {
