@@ -111,6 +111,7 @@ export function populateIonEnergyTables() {
     const selectorName = `ion-energy-num-ions-selected-${index}`;
     selectCell.setAttribute("id", selectorName);
     selectCell.setAttribute("name", selectorName);
+    selectCell.setAttribute("autocomplete", "off");
     selectCell.setAttribute("class", "ion-energy-econfig-select");
     selectCell.addEventListener("change",
       () => handleNumElectronsChangedByUser(totalOE!));
@@ -140,14 +141,17 @@ function handleNumElectronsChangedByUser(groundStateTotalEnergy: number) {
 
   // https://stackoverflow.com/questions/597588/how-do-you-clone-an-array-of-objects-in-javascript
   const newOrbitals = selectedElem.selectedElemOrbitals!.map(a => ({ ...a }));
+
   const selectors = document.querySelectorAll(".ion-energy-econfig-select");
   selectors.forEach((cell: any) => {
     // cell.id is ion-energy-num-ions-selected-#. Lop off everything except the number
     const index = Number(cell.id.charAt(cell.id.length - 1));
     // newOrbitals may only be 1, 2, 3, etc. in length for low-numbered elements.
     // but we have 5 selectors. only update if necessary.
+    console.log('selcells value is ', cell.value);
     if (index < newOrbitals.length) {
       newOrbitals[index].numElectrons = Number(cell.value);
+
     } else {
       // add a new orbital record to the end with the # of electrons.
       newOrbitals.push({
@@ -178,7 +182,7 @@ function handleNumElectronsChangedByUser(groundStateTotalEnergy: number) {
   cell.innerHTML = "VAOE";
   rightTableVaoeRow.appendChild(cell);
 
-  // console.log('newOrbitals = ', newOrbitals);
+  console.log('newOrbitals = ', newOrbitals);
   orbitalEnergies.forEach((e, index) => {
     cell = document.createElement('td');
     // if the occupancy of the orbital is 0, make the value 0 instead of the computed energy.
@@ -223,6 +227,7 @@ function handleNumElectronsChangedByUser(groundStateTotalEnergy: number) {
       optionCell.innerText = optionCell.value = `${i}`;
       selCell.appendChild(optionCell);
     }
+    console.log('setting selcell value to ', `${newOrbitals[index].numElectrons}`);
     selCell.value = `${newOrbitals[index].numElectrons}`;
   });
 
