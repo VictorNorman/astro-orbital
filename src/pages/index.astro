@@ -1,5 +1,6 @@
 ---
 import GraphsTab from "../components/GraphsTab.astro";
+import IntegralsTab from "../components/IntegralsTab.astro";
 import IonizationEnergyTab from "../components/IonizationEnergyTab.astro";
 import Matrix from "../components/Matrix.astro";
 import SelectableMatrix from "../components/SelectableMatrix.astro";
@@ -34,10 +35,12 @@ import { dynamic23Matrix, faussurierMatrix } from "../scripts/matrices";
         <li class="tab is-active" data-target="#tab1">VAO Energy</li>
         <li class="tab" data-target="#tab2">Graphs</li>
         <li class="tab" data-target="#tab3">Ionization Energy</li>
+        <li class="tab" data-target="#tab4">Integrals</li>
       </ul>
       <VAOEnergyTab />
       <GraphsTab />
       <IonizationEnergyTab />
+      <IntegralsTab />
     </div>
   </main>
 
