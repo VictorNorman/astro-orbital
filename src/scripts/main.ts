@@ -25,7 +25,6 @@ window.addEventListener("load", () => {
   });
 
   matrixSelection$.subscribe((sel: string) => {
-    console.log('subscription to matrixSelection: value is ', sel);
     updateSelectableMatrixContents(sel);
     if (sel === 'custom') {
       watchCustomMatrixForChanges();

@@ -11,15 +11,14 @@ function updateDiagram(compEnergies: readonly EnergyComponents[]) {
     return;
   }
 
-  console.log('updateDiagram');
   const econfig = selectedElement$.get().selectedElementInfo!.eConfig;
 
-  // the first item in each list is the total energy, which drawDiagram does not need.
-  // Also we convert to strings with fixed digits after the decimal.
+  // Convert to strings with fixed digits after the decimal.
+  // Slice off the first item in the array, as it is the total energy,
+  // which is not used in the diagram.
   const energies: string[][] = compEnergies.map((c) => (
     convert2Strings(c.totalEnergies).slice(1)
   ));
-
   drawDiagram(econfig, energies, ["dynamic23", "faussurier", matrixSelection$.get()]);
 }
 
@@ -27,6 +26,6 @@ function updateDiagram(compEnergies: readonly EnergyComponents[]) {
 
 // Trigger redraw when energy computation has emitted.
 energies$.subscribe((e) => {
-  updateDiagram(e)
+  updateDiagram(e);
   updateEnergyTables();
 });

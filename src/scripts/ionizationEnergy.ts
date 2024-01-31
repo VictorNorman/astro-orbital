@@ -148,10 +148,8 @@ function handleNumElectronsChangedByUser(groundStateTotalEnergy: number) {
     const index = Number(cell.id.charAt(cell.id.length - 1));
     // newOrbitals may only be 1, 2, 3, etc. in length for low-numbered elements.
     // but we have 5 selectors. only update if necessary.
-    console.log('selcells value is ', cell.value);
     if (index < newOrbitals.length) {
       newOrbitals[index].numElectrons = Number(cell.value);
-
     } else {
       // add a new orbital record to the end with the # of electrons.
       newOrbitals.push({
@@ -182,7 +180,6 @@ function handleNumElectronsChangedByUser(groundStateTotalEnergy: number) {
   cell.innerHTML = "VAOE";
   rightTableVaoeRow.appendChild(cell);
 
-  console.log('newOrbitals = ', newOrbitals);
   orbitalEnergies.forEach((e, index) => {
     cell = document.createElement('td');
     // if the occupancy of the orbital is 0, make the value 0 instead of the computed energy.
@@ -227,7 +224,6 @@ function handleNumElectronsChangedByUser(groundStateTotalEnergy: number) {
       optionCell.innerText = optionCell.value = `${i}`;
       selCell.appendChild(optionCell);
     }
-    console.log('setting selcell value to ', `${newOrbitals[index].numElectrons}`);
     selCell.value = `${newOrbitals[index].numElectrons}`;
   });
 
